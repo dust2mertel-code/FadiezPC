@@ -1,7 +1,6 @@
 import { Link, useLocation } from "react-router-dom"
 import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import ReactorLogo from "./ReactorLogo"
-import { useTranslation } from "react-i18next"
 
 const NAV_ITEMS = [
   { path: "/", label: "Главная" },
@@ -48,10 +47,7 @@ export default function Navbar() {
         ? "text-yellow-300 pointer-events-none"
         : "text-white/60 hover:text-yellow-300"
     }`
-  const { t, i18n } = useTranslation()
   const setLang = (lang) => {
-  i18n.changeLanguage(lang)
-  localStorage.setItem("lang", lang)
 }
   return (
     <nav className="fixed top-0 left-0 w-full h-20 z-50 bg-black/70 backdrop-blur-md border-b border-white/10 overflow-hidden">
