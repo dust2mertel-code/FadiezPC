@@ -1,5 +1,4 @@
-import { defineConfig } from "vite";
-
-export default defineConfig({
-  base: "/FadiezPC/",
-});
+export default defineConfig(({ command }) => ({
+  base: command === "serve" ? "/" : "/FadiezPC/",
+  plugins: [react()],
+}));

@@ -4,6 +4,9 @@ import { a, useSpring } from "@react-spring/three"
 import { useMemo, useRef, useState, useLayoutEffect } from "react"
 import * as THREE from "three"
 
+// ✅ NEW: correct asset base for GitHub Pages (/FadiezPC/) and local dev (/)
+const m = (name) => import.meta.env.BASE_URL + "models/" + name
+
 function CameraLight() {
   const ref = useRef(null)
   useFrame((state) => {
@@ -36,7 +39,7 @@ function CenteredPrimitive({ object, mode = "center" }) {
   )
 }
 
-function Part({ url, assembled, exploded, scale = 1, rotation = [0,0,0], t }) {
+function Part({ url, assembled, exploded, scale = 1, rotation = [0, 0, 0], t }) {
   const gltf = useGLTF(url)
 
   const scene = useMemo(() => gltf.scene.clone(true), [gltf.scene])
@@ -77,98 +80,99 @@ export default function PcScene() {
   })
 
   const cfg = {
-  case: {
-    url: "/models/case.glb",
-    scale: 0.90,
-    assembled: [0, 0, 0],
-    exploded: [0, 0, 0],
-  },
+    case: {
+      url: m("case.glb"),
+      scale: 0.90,
+      assembled: [0, 0, 0],
+      exploded: [0, 0, 0],
+    },
 
-  motherboard: {
-    url: "/models/motherboard.glb",
-    scale: 0.117,
-    assembled: [-0.39, 2.4, -0.55],
-    exploded: [-2.05, 3.15, 1.15],
-  },
+    motherboard: {
+      url: m("motherboard.glb"),
+      scale: 0.117,
+      assembled: [-0.39, 2.4, -0.55],
+      exploded: [-2.05, 3.15, 1.15],
+    },
 
-  gpu: {
-    url: "/models/gpu.glb",
-    scale: 0.5,
-    assembled: [-0.51, 2, -0.2],
-    exploded: [1.10, 2.15, 1.7],
-  },
+    gpu: {
+      url: m("gpu.glb"),
+      scale: 0.5,
+      assembled: [-0.51, 2, -0.2],
+      exploded: [1.10, 2.15, 1.7],
+    },
 
-  cpu: {
-    url: "/models/cpu.glb",
-    scale: 0.87,
-    assembled: [-0.27, 2.97, -0.68],
-    exploded: [0.35, 3.05, 1.7],
-  },
+    cpu: {
+      url: m("cpu.glb"),
+      scale: 0.87,
+      assembled: [-0.27, 2.97, -0.68],
+      exploded: [0.35, 3.05, 1.7],
+    },
 
-  ram: {
-    url: "/models/ram.glb",
-    scale: 0.35,
-    rotation: [Math.PI / 2, 0, 0],
-    assembled: [0.33, 2.95, -0.5],
-    exploded: [1.65, 4.05, 1.35],
-  },
+    ram: {
+      url: m("ram.glb"),
+      scale: 0.35,
+      rotation: [Math.PI / 2, 0, 0],
+      assembled: [0.33, 2.95, -0.5],
+      exploded: [1.65, 4.05, 1.35],
+    },
 
-  ram2: {
-    url: "/models/ram2.glb",
-    scale: 0.35,
-    rotation: [Math.PI / 2, 0, 0],
-    assembled: [0.53, 2.95, -0.5],
-    exploded: [2.05, 4.05, 1.35],
-  },
+    ram2: {
+      url: m("ram2.glb"),
+      scale: 0.35,
+      rotation: [Math.PI / 2, 0, 0],
+      assembled: [0.53, 2.95, -0.5],
+      exploded: [2.05, 4.05, 1.35],
+    },
 
-  psu: {
-    url: "/models/psu.glb",
-    scale: 9.7,
-    rotation: [0, Math.PI / 2, 0],
-    assembled: [-1, 0.50, -0.05],
-    exploded: [-1.55, 0.50, 1.70],
-  },
+    psu: {
+      url: m("psu.glb"),
+      scale: 9.7,
+      rotation: [0, Math.PI / 2, 0],
+      assembled: [-1, 0.50, -0.05],
+      exploded: [-1.55, 0.50, 1.70],
+    },
 
-  fan: {
-    url: "/models/fan.glb",
-    scale: 11,
-    rotation: [0, Math.PI / 2, 0],
-    assembled: [-1.65, 3.15, 0.26],
-    exploded: [-3.10, 3.55, 1.95],
-  },
+    fan: {
+      url: m("fan.glb"),
+      scale: 11,
+      rotation: [0, Math.PI / 2, 0],
+      assembled: [-1.65, 3.15, 0.26],
+      exploded: [-3.10, 3.55, 1.95],
+    },
 
-  fan1: {
-    url: "/models/fan1.glb",
-    scale: 11,
-    rotation: [0, Math.PI / 2, 0],
-    assembled: [1.6, 3.15, 0.18],
-    exploded: [3.10, 3.55, 1.55],
-  },
+    fan1: {
+      url: m("fan1.glb"),
+      scale: 11,
+      rotation: [0, Math.PI / 2, 0],
+      assembled: [1.6, 3.15, 0.18],
+      exploded: [3.10, 3.55, 1.55],
+    },
 
-  fan2: {
-    url: "/models/fan2.glb",
-    scale: 11,
-    rotation: [0, Math.PI / 2, 0],
-    assembled: [1.6, 2.1, 0.18],
-    exploded: [3.10, 2.25, 1.55],
-  },
+    fan2: {
+      url: m("fan2.glb"),
+      scale: 11,
+      rotation: [0, Math.PI / 2, 0],
+      assembled: [1.6, 2.1, 0.18],
+      exploded: [3.10, 2.25, 1.55],
+    },
 
-  fan3: {
-    url: "/models/fan3.glb",
-    scale: 11,
-    rotation: [0, Math.PI / 2, 0],
-    assembled: [1.6, 0.9, 0.18],
-    exploded: [3.10, 0.95, 1.55],
-  },
+    fan3: {
+      url: m("fan3.glb"),
+      scale: 11,
+      rotation: [0, Math.PI / 2, 0],
+      assembled: [1.6, 0.9, 0.18],
+      exploded: [3.10, 0.95, 1.55],
+    },
 
-  cpufan: {
-    url: "/models/cpufan.glb",
-    scale: 0.66,
-    rotation: [0, Math.PI / 2, 0],
-    assembled: [0.09, 3.4, -0.2],
-    exploded: [0.35, 4.8, 1.10],
-  },
-}
+    cpufan: {
+      url: m("cpufan.glb"),
+      scale: 0.66,
+      rotation: [0, Math.PI / 2, 0],
+      assembled: [0.09, 3.4, -0.2],
+      exploded: [0.35, 4.8, 1.10],
+    },
+  }
+
   return (
     <div className="w-full h-[520px] rounded-3xl border border-white/10 bg-black/25 overflow-hidden relative">
       <button
@@ -212,7 +216,7 @@ export default function PcScene() {
           <meshStandardMaterial color="#050507" roughness={1} metalness={0} />
         </mesh>
 
-        <Bounds fit clip margin={.15}>
+        <Bounds fit clip margin={0.15}>
           <group>
             <Part t={t} {...cfg.case} />
             <Part t={t} {...cfg.motherboard} />
@@ -237,15 +241,15 @@ export default function PcScene() {
   )
 }
 
-useGLTF.preload("/models/case.glb")
-useGLTF.preload("/models/motherboard.glb")
-useGLTF.preload("/models/gpu.glb")
-useGLTF.preload("/models/cpu.glb")
-useGLTF.preload("/models/r.glb")
-useGLTF.preload("/models/ram2.glb")
-useGLTF.preload("/models/psu.glb")
-useGLTF.preload("/models/fan.glb")
-useGLTF.preload("/models/fan1.glb")
-useGLTF.preload("/models/fan2.glb")
-useGLTF.preload("/models/fan3.glb")
-useGLTF.preload("/models/cpufan.glb")
+useGLTF.preload(m("case.glb"))
+useGLTF.preload(m("motherboard.glb"))
+useGLTF.preload(m("gpu.glb"))
+useGLTF.preload(m("cpu.glb"))
+useGLTF.preload(m("ram.glb"))
+useGLTF.preload(m("ram2.glb"))
+useGLTF.preload(m("psu.glb"))
+useGLTF.preload(m("fan.glb"))
+useGLTF.preload(m("fan1.glb"))
+useGLTF.preload(m("fan2.glb"))
+useGLTF.preload(m("fan3.glb"))
+useGLTF.preload(m("cpufan.glb"))
